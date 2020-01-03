@@ -1,0 +1,72 @@
+<div class="hero is-primary">
+
+  <h2 class="subtitle"> hello from parent app.component.html </h2>
+  
+  <div class="columns">
+    <div class="column">
+      <label class="label">msgFromBeyond</label>
+      <textarea class="input" readonly type="text" > {{msgFromBeyond}}  </textarea>
+    </div>
+    <div class="column">
+      <label class="label">myCount</label>
+      <textarea class="input" readonly type="text" > {{myCount}}  </textarea>
+    </div>
+    <div class="column">
+      <label class="label">myFriend</label>
+      <textarea class="input" readonly type="text" > {{myFriend}}  </textarea>
+    </div>
+    <div class="column">
+      <label class="label">gdArray1</label>
+      <textarea class="input" readonly type="text" > {{gdArray1}}  </textarea>
+    </div>
+    
+  </div>
+
+  <!-- ties parent to child -->
+  <app-counter-component    
+    [myFriend]="nango"
+    [count]="myCount"
+    (binder1)="parentFun1($event)" 
+    (binder2)="parentFun2($event)"
+    (binder3)="parentFun3($event)"
+  >
+   </app-counter-component>
+
+
+
+
+   
+    <h2 class="subtitle">parent app.component.html continued...</h2> 
+    <p>
+    So, what are we trying to do here?  <br>
+    Parent Child in Angular  <br>
+    @input @output <br>
+    where the parent passes down two vars to the child <br>
+    ( myFriend and myCount). <br>
+    The child passes up two weirdo things to the parent.  <br>
+    the weirdo things are event emitters.  <br>
+    event emitters are tied to functions parentFun1 and parentFun2. <br>
+    event emitters push events up to the parent. <br>
+    event emit method passes up bla to the parent in .emit(bla) <br>
+    We us BULMA css for style <br>
+    <!-- <a href="https://bulma.io/">Bulma.io</a> -->
+  </p>
+
+
+</div>
+
+
+
+<!--  In the parent component’s template, 
+                          like this file, app.component.html
+  define event bindings 
+                like (binder1)
+ as part of the child component’s selector. 
+                   like app-counter-component
+ A binding should point to a method defined 
+ in the parent component’s class 
+                   like parentFun1()
+ that takes action on the data received from the child. 
+ $event contains the payload emitted from the child 
+the emit() method  pushes the event up to the parent component.
+-->
